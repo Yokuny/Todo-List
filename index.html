@@ -6,7 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>to-do list</title>
 </head>
+<style>
+    body{display: flex; justify-content: center; align-items: center; width: 100vh; height: 100vh;}
+    div{
+        font-size: 43px;
+        color: red;
+    }
+    div:hover{
+        color: blueviolet;
+    }
+    div:hover::after{
+        content: "<";
+    }
+    div:hover::before{
+        content: ">";
+    }
+</style>
 <body>
-    
+    <main>
+        <div>a</div>
+        <div>b</div>
+        <div>c</div>
+    </main>
 </body>
 </html>
