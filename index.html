@@ -4,29 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>to-do list</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/style.css">
 </head>
-<style>
-    body{display: flex; justify-content: center; align-items: center; width: 100vh; height: 100vh;}
-    div{
-        font-size: 43px;
-        color: red;
-    }
-    div:hover{
-        color: blueviolet;
-    }
-    div:hover::after{
-        content: "<";
-    }
-    div:hover::before{
-        content: ">";
-    }
-</style>
 <body>
-    <main>
-        <div>a</div>
-        <div>b</div>
-        <div>c</div>
-    </main>
+    <div class="card">
+        <input required type="text" name="" id="taskTitle" placeholder="titulo">
+        <input required type="text" name="" id="taskDescription" placeholder="descrição">
+        <input required type="date" name="" id="dueData" placeholder="data final">
+        <label for="importance">importance</label>
+        <select id="importance" name="importance" size="3">
+          <option value="normal" selected>normal</option>
+          <option value="important">important</option>
+          <option value="urgent">urgent</option>
+        </select>
+        <button onclick="createTask()">Create</button>
+    </div>
 </body>
-</html>
+<script src="./scripts/core.js"></script>
+</html >

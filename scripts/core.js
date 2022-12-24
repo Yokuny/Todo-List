@@ -14,3 +14,51 @@
 - deletar uma tarefa
 */
 /* implementar forma de salvamento das tarefas em localStorage > salvando os arquivos no computador do usuario */
+
+let taskArray = [];
+
+function clearInput(){
+    document.getElementById("taskTitle").value = "";
+    document.getElementById("taskDescription").value = "";
+    document.getElementById("dueData").value = "";
+    document.getElementById("importance").value = "normal";
+}
+
+const task = (title, description, dueDate, priorityColor) => {
+    let priority;
+    switch (priorityColor) {
+        case "normal":
+            priority = "lawngreen"
+            break;
+        case "important":
+            priority = "dodgerblue"
+            break;
+        case "urgent":
+            priority = "crimson"
+            break;
+        default:
+            priority = "green"
+            break;
+    }
+    return { title, description, dueDate, priority };
+};
+function createTask(){
+    if(localStorage.taskList){
+        taskArray = JSON.parse(localStorage.getItem("taskList"));
+    }
+    let aTask = task(
+        document.getElementById("taskTitle").value,
+        document.getElementById("taskDescription").value,
+        document.getElementById("dueData").value,
+        document.getElementById("importance").value
+    );
+    taskArray.push(aTask);
+    clearInput();
+
+    localStorage.setItem("taskList", JSON.stringify(taskArray));
+
+    // let getTasks = localStorage.getItem("task");
+    // let taskList = JSON.parse(getTasks);
+
+    console.log(taskArray);
+}

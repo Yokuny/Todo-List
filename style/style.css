@@ -1,0 +1,17 @@
+body{
+    background-color: darkgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid gray;
+    background-color: white;
+    gap: 10px
+}
