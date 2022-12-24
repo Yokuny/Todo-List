@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Yokuny/Todo-List#readme",
   "dependencies": {
     "css-loader": "^6.7.3",
+    "git-ignore-node": "^1.0.2",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack.config.js": "^0.0.0"
