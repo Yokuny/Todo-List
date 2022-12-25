@@ -1,0 +1,93 @@
+.registerScreen {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.registerScreen .floatingCard {
+  padding: max(26px, 4vh);
+  background-color: white;
+  border-radius: 10px;
+} /* */
+.registerScreen .floatingCard .taskInput {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+} /* */
+.taskInput label {
+  padding-left: 12px;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.taskInput input {
+  border: 1px solid #8f8f9d;
+  border-radius: 2px;
+  color: #8f8f9d;
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-align: center;
+  padding: 6px;
+} /* */
+.taskInput fieldset {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border: 1px solid #8f8f9d;
+  border-radius: 2px;
+  padding: 6px;
+}
+.taskInput fieldset legend {
+  font-size: 1.6rem;
+  padding: 0px 4px;
+  font-weight: 400;
+}
+.taskInput fieldset label {
+  height: 14px;
+  padding-left: 0px;
+} /* estilizando check box do radio */
+.taskInput fieldset input {
+  appearance: none;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.taskInput fieldset input::before {
+  position: absolute;
+  content: "";
+  border-radius: 2px;
+  height: 50%;
+  width: 50%;
+  background-color: black;
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+}
+.taskInput fieldset input:checked:before {
+  opacity: 1;
+}
+.taskInput fieldset #normal:before {
+  background-color: greenyellow;
+}
+.taskInput fieldset #normal:focus {
+  box-shadow: 0 0 3px greenyellow;
+}
+.taskInput fieldset #important:before {
+  background-color: cyan;
+}
+.taskInput fieldset #important:focus {
+  box-shadow: 0 0 3px cyan;
+}
+.taskInput fieldset #urgent:before {
+  background-color: crimson;
+}
+.taskInput fieldset #urgent:focus {
+  box-shadow: 0 0 3px crimson;
+}
