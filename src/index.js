@@ -14,41 +14,59 @@
 - deletar uma tarefa
 */
 /* implementar forma de salvamento das tarefas em localStorage > salvando os arquivos no computador do usuario */
-import registerCard from "./script/registerCardRender";
 
 let taskArray = [];
 
-function clearInput() {
-  document.getElementById("taskTitle").value = "";
-  document.getElementById("taskDescription").value = "";
-  document.getElementById("dueData").value = "";
-  document.getElementById("importance").value = "normal";
+const task = (title, description, dueDate, priorityColor) => {
+  let priority;
+  switch (priorityColor) {
+      case "normal":
+          priority = "lawngreen";
+          break;
+      case "important":
+          priority = "dodgerblue";
+          break;
+      case "urgent":
+          priority = "crimson";
+          break;
+      default:
+          priority = "green";
+          break;
+  }
+  return { title, description, dueDate, priority };
+};
+function closeRegisterCard(){
+  const allScreenCard = document.getElementById("placeToRegisterCardRender");
+  allScreenCard.style.display = "none";
 }
+
 
 if (localStorage.taskList) {
   taskArray = JSON.parse(localStorage.getItem("taskList"));
-  //renderTasks;
+  closeRegisterCard();
 } else {
-  registerCard();
+  console.log("não há data");
 }
 
+
 const newTask = document.getElementById("taskInput");
-
-newTask.addEventListener("submit", (event) => {
-  event.preventDefault;
-
-  console.log(document.getElementById("importance").value);
+newTask.addEventListener("submit", (submitEvent) => {
+  submitEvent.preventDefault();
+  let taskPriority = "";
+  if(document.getElementById("urgent").checked){
+    taskPriority = "urgent";
+  }else if(document.getElementById("important").checked){
+    taskPriority = "important";
+  }else{
+    taskPriority = "normal";
+  }
   let aTask = task(
     document.getElementById("taskTitle").value,
     document.getElementById("taskDescription").value,
     document.getElementById("dueData").value,
-    document.getElementById("importance").value
+    taskPriority
   );
   taskArray.push(aTask);
-  clearInput();
-
   localStorage.setItem("taskList", JSON.stringify(taskArray));
-
-  // let getTasks = localStorage.getItem("task");
-  // let taskList = JSON.parse(getTasks);
+  closeRegisterCard();
 });

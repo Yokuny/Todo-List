@@ -17,6 +17,17 @@ time, mark, audio, video {
 	font-size: 62.5%;
 	vertical-align: baseline;
 }
+:root{
+	--green: #adff2f;
+	--blue: #00ffff;
+	--red: #dc143c;
+	--black: #000;
+	--gray: #8f8f9d;
+	--light-gray: #c8c8c84d;
+}
+* {
+	font-family: 'Nunito', sans-serif;
+}
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
