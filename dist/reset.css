@@ -27,3 +27,6 @@ body {
 ol, ul {
 	list-style: none;
 }
+h4, button, ion-icon{
+	cursor: pointer;
+}

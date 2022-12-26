@@ -14,7 +14,6 @@
 - deletar uma tarefa
 */
 /* implementar forma de salvamento das tarefas em localStorage > salvando os arquivos no computador do usuario */
-import "./style/reset.css";
 import registerCard from "./script/registerCardRender";
 
 let taskArray = [];

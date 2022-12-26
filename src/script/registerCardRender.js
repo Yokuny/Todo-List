@@ -1,4 +1,3 @@
-import "../style/reset.css";
 import "../style/register.css";
 // https://www.qodo.co.uk/blog/javascript-enabling-and-disabling-form-field-elements/
 // para desativar elementos do input quando implementar opção de Task List e Quote
