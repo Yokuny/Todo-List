@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="register.css">
     <link rel="stylesheet" href="style.css">
 </head>
+<!-- https://www.qodo.co.uk/blog/javascript-enabling-and-disabling-form-field-elements/
+para desativar elementos do input quando implementar opção de Task List e Quote -->
 <body>
+    <div id="placeToRegisterCardRender">
+        <section class="registerScreen">
+            <div class="floatingCard">
+                <form id="taskInput">
+                    <label for="taskTitle">Título</label>
+                    <input required type="text" id="taskTitle" placeholder="Título" />
+                    <label for="taskDescription">Descrição</label>
+                    <textarea required type="text" id="taskDescription" placeholder="Descrição"></textarea>
+                    <label for="dueData">Data limite</label>
+                    <input required type="date" id="dueData" placeholder="data final" />
+                    <fieldset>
+                        <legend>Prioridade</legend>
+                        <input name="importance" type="radio" id="normal" checked />
+                        <label for="normal">normal</label>
+                        <input name="importance" type="radio" id="important"  />
+                        <label for="important">important</label>
+                        <input name="importance" type="radio" id="urgent" />
+                        <label for="urgent">urgent</label>
+                    </fieldset>
+                    <button type="submit">Create</button>
+                </form>
+            </div>
+        </section>
+    </div>
     <header>
         <ion-icon name="checkmark-done-outline"></ion-icon>
     </header>
-
     <main>
         <aside>
             <div id="projectList">
@@ -32,14 +62,12 @@
                     <ion-icon name="reader-outline"></ion-icon>
                     <h4>all the tasks</h4>
                 </div>
-                
             </div>
             <div>
                 <button>+</button>
             </div>
         </aside>
         <section id="itens">
-            
             <div class="item">
                 <div>
                     <h4>Tarefa de casa</h4>
@@ -51,8 +79,6 @@
                     <ion-icon name="trash-outline"></ion-icon>
                 </div>
             </div>
-
-            
             <div class="item">
                 <div>
                     <h4>Tarefa de casa</h4>
@@ -64,8 +90,6 @@
                     <ion-icon name="trash-outline"></ion-icon>
                 </div>
             </div>
-
-            
             <div class="item">
                 <div>
                     <h4>Tarefa de casa</h4>
@@ -77,8 +101,6 @@
                     <ion-icon name="trash-outline"></ion-icon>
                 </div>
             </div>
-
-            
             <div class="item">
                 <div>
                     <h4>Tarefa de casa</h4>
@@ -90,8 +112,6 @@
                     <ion-icon name="trash-outline"></ion-icon>
                 </div>
             </div>
-
-            
             <div class="item">
                 <div>
                     <h4>Tarefa de casa</h4>
@@ -103,8 +123,6 @@
                     <ion-icon name="trash-outline"></ion-icon>
                 </div>
             </div>
-
-            
             <div class="item">
                 <div>
                     <h4>Tarefa de casa</h4>
@@ -116,8 +134,6 @@
                     <ion-icon name="trash-outline"></ion-icon>
                 </div>
             </div>
-
-            
             <div class="item">
                 <div>
                     <h4>Tarefa de casa</h4>
@@ -129,8 +145,6 @@
                     <ion-icon name="trash-outline"></ion-icon>
                 </div>
             </div>
-
-            
             <div class="item">
                 <div>
                     <h4>Tarefa de casa</h4>
@@ -142,16 +156,13 @@
                     <ion-icon name="trash-outline"></ion-icon>
                 </div>
             </div>
-
-
-
         </section>
     </main>
-
     <footer>
-        <button>+</button>
+        <button onclick="registerCard()">+</button>
     </footer>
 </body>
+<script src="bundle.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </html>
