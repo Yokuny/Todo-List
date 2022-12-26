@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>to-do</title>
+    <link rel="shortcut icon" href="checkmark-done-outline.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"> 
@@ -16,6 +17,7 @@
 <!-- https://www.qodo.co.uk/blog/javascript-enabling-and-disabling-form-field-elements/
 para desativar elementos do input quando implementar opção de Task List e Quote -->
 <body>
+    <!--Floating screen to register-->
     <div id="placeToRegisterCardRender">
         <section class="registerScreen">
             <div class="floatingCard">
@@ -40,9 +42,11 @@ para desativar elementos do input quando implementar opção de Task List e Quot
             </div>
         </section>
     </div>
+    <!-- page header -->
     <header>
         <ion-icon name="checkmark-done-outline"></ion-icon>
     </header>
+    <!-- aside menu projetos -->
     <main>
         <aside>
             <div id="projectList">
@@ -67,84 +71,8 @@ para desativar elementos do input quando implementar opção de Task List e Quot
                 <button>+</button>
             </div>
         </aside>
+        <!-- display de todas as tarefas -->
         <section id="itens">
-            <div class="item">
-                <div>
-                    <h4>Tarefa de casa</h4>
-                    <p>Fazer a tarefa até as 18h</p>
-                </div>
-                <div class="cardIcons">
-                    <ion-icon name="eye-outline"></ion-icon>
-                    <ion-icon name="create-outline"></ion-icon>
-                    <ion-icon name="trash-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="item">
-                <div>
-                    <h4>Tarefa de casa</h4>
-                    <p>Fazer a tarefa até as 18h</p>
-                </div>
-                <div class="cardIcons">
-                    <ion-icon name="eye-outline"></ion-icon>
-                    <ion-icon name="create-outline"></ion-icon>
-                    <ion-icon name="trash-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="item">
-                <div>
-                    <h4>Tarefa de casa</h4>
-                    <p>Fazer a tarefa até as 18h</p>
-                </div>
-                <div class="cardIcons">
-                    <ion-icon name="eye-outline"></ion-icon>
-                    <ion-icon name="create-outline"></ion-icon>
-                    <ion-icon name="trash-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="item">
-                <div>
-                    <h4>Tarefa de casa</h4>
-                    <p>Fazer a tarefa as fasf saf asf saf asfsa sa fsfa sf  até as 18h</p>
-                </div>
-                <div class="cardIcons">
-                    <ion-icon name="eye-outline"></ion-icon>
-                    <ion-icon name="create-outline"></ion-icon>
-                    <ion-icon name="trash-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="item">
-                <div>
-                    <h4>Tarefa de casa</h4>
-                    <p>Fazer a tarefa até as 18h</p>
-                </div>
-                <div class="cardIcons">
-                    <ion-icon name="eye-outline"></ion-icon>
-                    <ion-icon name="create-outline"></ion-icon>
-                    <ion-icon name="trash-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="item">
-                <div>
-                    <h4>Tarefa de casa</h4>
-                    <p>Fazer a tarefa até as 18h asdas dasd asd adsas das dasd as</p>
-                </div>
-                <div class="cardIcons">
-                    <ion-icon name="eye-outline"></ion-icon>
-                    <ion-icon name="create-outline"></ion-icon>
-                    <ion-icon name="trash-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="item">
-                <div>
-                    <h4>Tarefa de casa</h4>
-                    <p>Fazer a tarefa até  asfasf  asf asfas fas fas fasf as 18h</p>
-                </div>
-                <div class="cardIcons">
-                    <ion-icon name="eye-outline"></ion-icon>
-                    <ion-icon name="create-outline"></ion-icon>
-                    <ion-icon name="trash-outline"></ion-icon>
-                </div>
-            </div>
             <div class="item">
                 <div>
                     <h4>Tarefa de casa</h4>
@@ -158,8 +86,9 @@ para desativar elementos do input quando implementar opção de Task List e Quot
             </div>
         </section>
     </main>
+    <!-- Botão parte inferior -->
     <footer>
-        <button onclick="registerCard()">+</button>
+        <button id="registerTaskCard">+</button>
     </footer>
 </body>
 <script src="bundle.js"></script>
