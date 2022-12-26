@@ -74,11 +74,14 @@ footer{
 footer > button{
     width: min(65%, 600px);
     height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 0;
-    background-color: var(--light-gray);
     border-radius: 12px;
     margin-bottom: 30px;
     font-size: 2rem;
+    background-color: var(--gray);
     transition: all 400ms ease-in-out;
     padding: 10px;
 }
@@ -115,11 +118,28 @@ footer > button:hover::after{
 .cardIcons{
     position: absolute;
     bottom: 0;
+    display: flex;
     font-size: 1.3rem;
-    gap: 8px;
+    gap: 6px;
     right: 6px;
     bottom: 6px;
-}/*  */
+}
+.cardIcons ion-icon{
+    transition: all 150ms ease-in-out;
+}
+.cardIcons ion-icon:hover{
+    font-size: 1.5rem;
+}
+.cardIcons ion-icon:nth-child(1):hover{
+    color: var(--blue);
+}
+.cardIcons ion-icon:nth-child(2):hover{
+    color: var(--green);
+}
+.cardIcons ion-icon:nth-child(3):hover{
+    color: var(--red);
+}
+/*  */
 @media (max-width:825px) {
     main{
         display: initial;

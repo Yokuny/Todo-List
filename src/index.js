@@ -16,30 +16,10 @@
 /* implementar forma de salvamento das tarefas em localStorage > salvando os arquivos no computador do usuario */
 
 let taskArray = [];
-
-const task = (title, description, dueDate, priorityColor) => {
-  let priority;
-  switch (priorityColor) {
-      case "normal":
-          priority = "lawngreen";
-          break;
-      case "important":
-          priority = "dodgerblue";
-          break;
-      case "urgent":
-          priority = "crimson";
-          break;
-      default:
-          priority = "green";
-          break;
-  }
-  return { title, description, dueDate, priority };
-};
-function closeRegisterCard(){
-  const allScreenCard = document.getElementById("placeToRegisterCardRender");
-  allScreenCard.style.display = "none";
-}
-
+import task from "./script/task.js";
+import closeRegisterCard from "./script/closeRegisterCard.js";
+import cleanRegisterCard from "./script/cleanRegisterCard.js";
+import registerTaskCard from "./script/registerTaskCard.js";
 
 if (localStorage.taskList) {
   taskArray = JSON.parse(localStorage.getItem("taskList"));
@@ -48,16 +28,15 @@ if (localStorage.taskList) {
   console.log("não há data");
 }
 
-
 const newTask = document.getElementById("taskInput");
 newTask.addEventListener("submit", (submitEvent) => {
   submitEvent.preventDefault();
   let taskPriority = "";
-  if(document.getElementById("urgent").checked){
+  if (document.getElementById("urgent").checked) {
     taskPriority = "urgent";
-  }else if(document.getElementById("important").checked){
+  } else if (document.getElementById("important").checked) {
     taskPriority = "important";
-  }else{
+  } else {
     taskPriority = "normal";
   }
   let aTask = task(
@@ -69,4 +48,5 @@ newTask.addEventListener("submit", (submitEvent) => {
   taskArray.push(aTask);
   localStorage.setItem("taskList", JSON.stringify(taskArray));
   closeRegisterCard();
+  cleanRegisterCard();
 });
