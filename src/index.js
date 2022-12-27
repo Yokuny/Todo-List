@@ -21,11 +21,40 @@ import closeRegisterCard from "./script/closeRegisterCard.js";
 import cleanRegisterCard from "./script/cleanRegisterCard.js";
 import registerTaskCard from "./script/registerTaskCard.js";
 
+/*agora renderizar elementos na tela*/
+function renderAllTasks(){
+  let taskCards = [];
+  taskArray.forEach(element => {
+    taskCards.push(
+      `
+      <div class="item" style="border-left: 10px solid var(--${element.priorityColor})">
+      <div>
+      <h4>${element.title}</h4>
+      <p>${element.description}</p>
+      </div>
+      <div class="cardIcons">
+      <ion-icon name="eye-outline"></ion-icon>
+      <ion-icon name="create-outline"></ion-icon>
+      <ion-icon name="trash-outline"></ion-icon>
+      </div>
+      </div>
+      `);
+    });
+  let ss = document.getElementById("itens");
+  taskCards.forEach(element => {
+    ss.append(element);
+  });
+};
+/*
+
+*/
+
 if (localStorage.taskList) {
   taskArray = JSON.parse(localStorage.getItem("taskList"));
   closeRegisterCard();
+  renderAllTasks();
 } else {
-  console.log("não há data");
+  registerTaskCard();
 }
 
 const newTask = document.getElementById("taskInput");

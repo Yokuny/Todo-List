@@ -100,7 +100,6 @@ footer > button:hover::after{
 }
 #itens .item{
     max-width: 300px;
-    border-left: 10px solid var(--green);
     padding:10px 12px 24px;
     border-radius: 2px;
     background-color: var(--light-gray);

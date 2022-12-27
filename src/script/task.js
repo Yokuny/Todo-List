@@ -2,16 +2,16 @@ const task = (title, description, dueDate, priorityColor) => {
   let priority;
   switch (priorityColor) {
     case "normal":
-      priority = "lawngreen";
+      priority = "green";
       break;
     case "important":
-      priority = "dodgerblue";
+      priority = "blue";
       break;
     case "urgent":
-      priority = "crimson";
+      priority = "red";
       break;
     default:
-      priority = "green";
+      priority = "light-gray";
       break;
   }
   return { title, description, dueDate, priority };
