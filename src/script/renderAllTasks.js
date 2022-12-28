@@ -1,5 +1,6 @@
-export default function renderAllTasks() {
-  const allTasks = JSON.parse(localStorage.getItem("taskList"));
+export default function renderAllTasks(allTasks) {
+  //
+  console.log(allTasks);
   let taskCards = [];
   allTasks.forEach((element) => {
     let cardTextH4 = document.createElement("h4");
@@ -11,9 +12,9 @@ export default function renderAllTasks() {
     cardTextContent.appendChild(cardTextP);
     let iconsDiv = document.createElement("div");
     iconsDiv.innerHTML = `
-      <ion-icon name="eye-outline"></ion-icon>
-      <ion-icon name="create-outline"></ion-icon>
-      <ion-icon name="trash-outline"></ion-icon>`;
+    <ion-icon name="eye-outline"></ion-icon>
+    <ion-icon name="create-outline"></ion-icon>
+    <ion-icon name="trash-outline"></ion-icon>`;
     iconsDiv.classList.add("cardIcons");
     let theCard = document.createElement("div");
     theCard.classList.add("item");
@@ -26,5 +27,6 @@ export default function renderAllTasks() {
   taskCards.forEach((element) => {
     tasksElement.appendChild(element);
   });
-  return;
+  //
+  console.log(">>> Render All Tasks");
 }

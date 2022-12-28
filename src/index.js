@@ -16,13 +16,26 @@
 let taskArray = [];
 import task from "./script/task.js";
 import closeRegisterCard from "./script/closeRegisterCard.js";
+import openRegisterCard from "./script/openRegisterCard.js";
 import cleanRegisterCard from "./script/cleanRegisterCard.js";
-import renderAllTasks from "./script/renderAllTasks.js"
-
-const newTask = document.getElementById("registerTaskCard");
-newTask.addEventListener("submit", (submitEvent) => {
-  submitEvent.preventDefault();
-  console.log(">>> entrei no botão com addEventListener na finalização de Registro de task");
+import renderAllTasks from "./script/renderAllTasks.js";
+const newTask = document.getElementById("taskInput");
+const buttonToRegisterTask = document.getElementById("registerTaskCard");
+if (localStorage.taskList) {
+  taskArray = JSON.parse(localStorage.getItem("taskList"));
+  closeRegisterCard();
+  renderAllTasks(taskArray);
+  console.log("> true para localStorage taskList");
+} else {
+  const allScreenCard = document.getElementById("placeToRegisterCardRender");
+  allScreenCard.style.display = "initial";
+  console.log("> false para localStorage taskList");
+}
+/* colocando event listener no Form quando submeter a nova task */
+newTask.addEventListener("submit", (e) => {
+  e.preventDefault();
+  //
+  console.log("> Peguei addEventListener submit do Task Register");
   let taskPriority = "";
   if (document.getElementById("urgent").checked) {
     taskPriority = "urgent";
@@ -38,22 +51,22 @@ newTask.addEventListener("submit", (submitEvent) => {
     taskPriority
   );
   taskArray.push(aTask);
-  console.log(">>> percorri todo o addEventListener do botão de add task");
   localStorage.setItem("taskList", JSON.stringify(taskArray));
+  //
+  console.log(">> criei task adicionei em Array e localStorage");
   closeRegisterCard();
   cleanRegisterCard();
   renderAllTasks();
+  //
+  console.log(">>> Fechei, limpei e renderizei as task");
+});
+/* colocando event listener no botão de add task */
+buttonToRegisterTask.addEventListener("click", () => {
+  console.log(">>>> recebi click no botão de adicionar task");
+  openRegisterCard();
 });
 
 
 
-if (localStorage.taskList) {
-  taskArray = JSON.parse(localStorage.getItem("taskList"));
-  console.log(">>> entrei no 'if true' para caso exista localStorage");
-  closeRegisterCard();
-  renderAllTasks();
-} else {
-  const allScreenCard = document.getElementById("placeToRegisterCardRender");
-  allScreenCard.style.display = "initial";
-}
+
 
