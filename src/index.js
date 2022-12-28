@@ -12,7 +12,6 @@
     mudando de cor para diferentes prioridades)
 - expandir uma unica tarefa para poder ver seus detalhes e altera-la
 - deletar uma tarefa */
-
 let taskArray = [];
 import task from "./script/task.js";
 import closeRegisterCard from "./script/closeRegisterCard.js";
@@ -21,15 +20,16 @@ import cleanRegisterCard from "./script/cleanRegisterCard.js";
 import renderAllTasks from "./script/renderAllTasks.js";
 const newTask = document.getElementById("taskInput");
 const buttonToRegisterTask = document.getElementById("registerTaskCard");
+/*   */
 if (localStorage.taskList) {
   taskArray = JSON.parse(localStorage.getItem("taskList"));
   closeRegisterCard();
   renderAllTasks(taskArray);
-  console.log("> true para localStorage taskList");
+  console.log("> true for localStorage taskList");
 } else {
   const allScreenCard = document.getElementById("placeToRegisterCardRender");
   allScreenCard.style.display = "initial";
-  console.log("> false para localStorage taskList");
+  console.log("> false for localStorage taskList");
 }
 /* colocando event listener no Form quando submeter a nova task */
 newTask.addEventListener("submit", (e) => {
@@ -53,16 +53,16 @@ newTask.addEventListener("submit", (e) => {
   taskArray.push(aTask);
   localStorage.setItem("taskList", JSON.stringify(taskArray));
   //
-  console.log(">> criei task adicionei em Array e localStorage");
+  console.log("> criei task adicionei em Array e localStorage");
   closeRegisterCard();
   cleanRegisterCard();
-  renderAllTasks();
+  renderAllTasks(taskArray);
   //
-  console.log(">>> Fechei, limpei e renderizei as task");
+  console.log("> Fechei, limpei e renderizei as task");
 });
 /* colocando event listener no botão de add task */
 buttonToRegisterTask.addEventListener("click", () => {
-  console.log(">>>> recebi click no botão de adicionar task");
+  console.log("> recebi click no botão de adicionar task");
   openRegisterCard();
 });
 

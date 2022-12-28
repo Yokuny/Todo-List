@@ -1,6 +1,6 @@
 export default function renderAllTasks(allTasks) {
-  //
-  console.log(allTasks);
+  const tasksElement = document.getElementById("itens");
+  tasksElement.innerHTML = "";
   let taskCards = [];
   allTasks.forEach((element) => {
     let cardTextH4 = document.createElement("h4");
@@ -23,7 +23,6 @@ export default function renderAllTasks(allTasks) {
     theCard.appendChild(iconsDiv);
     taskCards.push(theCard);
   });
-  const tasksElement = document.getElementById("itens");
   taskCards.forEach((element) => {
     tasksElement.appendChild(element);
   });
