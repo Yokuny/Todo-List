@@ -1,6 +1,7 @@
-const registerTaskCard = document.getElementById("registerTaskCard");
+let registerTaskCard = document.getElementById("registerTaskCard");
 registerTaskCard.addEventListener("click", () => {
-  const allScreenCard = document.getElementById("placeToRegisterCardRender");
+  let allScreenCard = document.getElementById("placeToRegisterCardRender");
   allScreenCard.style.display = "initial";
 });
+console.log(">> Abri a tela de registro");
 export default registerTaskCard;

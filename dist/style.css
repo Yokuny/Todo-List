@@ -86,10 +86,11 @@ footer > button{
     padding: 10px;
 }
 footer > button:hover{
+    font-size: 1.8rem;
     background-color: var(--blue);
 }
 footer > button:hover::after{
-    content: " adicionar";
+    content:" adicionar";
 }/*  */
 #itens{
     grid-area: "section";
@@ -133,7 +134,7 @@ footer > button:hover::after{
     color: var(--blue);
 }
 .cardIcons ion-icon:nth-child(2):hover{
-    color: var(--green);
+    color: #008000;
 }
 .cardIcons ion-icon:nth-child(3):hover{
     color: var(--red);

@@ -11,55 +11,18 @@
 - visualizar todos as tarefas em cada projeto (provavelmente apenas o título e a data de vencimento…
     mudando de cor para diferentes prioridades)
 - expandir uma unica tarefa para poder ver seus detalhes e altera-la
-- deletar uma tarefa
-*/
-/* implementar forma de salvamento das tarefas em localStorage > salvando os arquivos no computador do usuario */
+- deletar uma tarefa */
 
 let taskArray = [];
 import task from "./script/task.js";
 import closeRegisterCard from "./script/closeRegisterCard.js";
 import cleanRegisterCard from "./script/cleanRegisterCard.js";
-import registerTaskCard from "./script/registerTaskCard.js";
+import renderAllTasks from "./script/renderAllTasks.js"
 
-/*agora renderizar elementos na tela*/
-function renderAllTasks(){
-  let taskCards = [];
-  taskArray.forEach(element => {
-    taskCards.push(
-      `
-      <div class="item" style="border-left: 10px solid var(--${element.priorityColor})">
-      <div>
-      <h4>${element.title}</h4>
-      <p>${element.description}</p>
-      </div>
-      <div class="cardIcons">
-      <ion-icon name="eye-outline"></ion-icon>
-      <ion-icon name="create-outline"></ion-icon>
-      <ion-icon name="trash-outline"></ion-icon>
-      </div>
-      </div>
-      `);
-    });
-  let ss = document.getElementById("itens");
-  taskCards.forEach(element => {
-    ss.append(element);
-  });
-};
-/*
-
-*/
-
-if (localStorage.taskList) {
-  taskArray = JSON.parse(localStorage.getItem("taskList"));
-  closeRegisterCard();
-  renderAllTasks();
-} else {
-  registerTaskCard();
-}
-
-const newTask = document.getElementById("taskInput");
+const newTask = document.getElementById("registerTaskCard");
 newTask.addEventListener("submit", (submitEvent) => {
   submitEvent.preventDefault();
+  console.log(">>> entrei no botão com addEventListener na finalização de Registro de task");
   let taskPriority = "";
   if (document.getElementById("urgent").checked) {
     taskPriority = "urgent";
@@ -75,7 +38,22 @@ newTask.addEventListener("submit", (submitEvent) => {
     taskPriority
   );
   taskArray.push(aTask);
+  console.log(">>> percorri todo o addEventListener do botão de add task");
   localStorage.setItem("taskList", JSON.stringify(taskArray));
   closeRegisterCard();
   cleanRegisterCard();
+  renderAllTasks();
 });
+
+
+
+if (localStorage.taskList) {
+  taskArray = JSON.parse(localStorage.getItem("taskList"));
+  console.log(">>> entrei no 'if true' para caso exista localStorage");
+  closeRegisterCard();
+  renderAllTasks();
+} else {
+  const allScreenCard = document.getElementById("placeToRegisterCardRender");
+  allScreenCard.style.display = "initial";
+}
+
