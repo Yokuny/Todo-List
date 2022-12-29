@@ -1,4 +1,4 @@
-const task = (title, description, dueDate, priorityColor) => {
+const task = (title, description, dueDate, priorityColor, id) => {
   let priority;
   switch (priorityColor) {
     case "normal":
@@ -14,6 +14,7 @@ const task = (title, description, dueDate, priorityColor) => {
       priority = "light-gray";
       break;
   }
-  return { title, description, dueDate, priority };
+  id += 1000;
+  return { title, description, dueDate, priority, id };
 };
 export default task;
