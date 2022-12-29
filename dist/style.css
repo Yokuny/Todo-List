@@ -81,7 +81,8 @@ footer > button{
     border-radius: 12px;
     margin-bottom: 30px;
     font-size: 2rem;
-    background-color: var(--gray);
+    background-color: var(--light-gray);
+    box-shadow: 2px 1px 6px -1px #0000004e;
     transition: all 400ms ease-in-out;
     padding: 10px;
 }

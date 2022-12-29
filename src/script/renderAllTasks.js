@@ -14,7 +14,7 @@ export default function renderAllTasks(allTasks) {
     iconsDiv.innerHTML = `
     <ion-icon name="eye-outline"></ion-icon>
     <ion-icon name="create-outline"></ion-icon>
-    <ion-icon id="${allTasks[index].id} removeTheTask" name="trash-outline"></ion-icon>`;
+    <ion-icon id="${allTasks[index].id}" name="trash-outline"></ion-icon>`;
     iconsDiv.classList.add("cardIcons");
     let theCard = document.createElement("div");
     theCard.classList.add("item");

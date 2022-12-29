@@ -17,16 +17,37 @@ import cleanRegisterCard from "./script/cleanRegisterCard.js";
 import renderAllTasks from "./script/renderAllTasks.js";
 const newTask = document.getElementById("taskInput");
 const buttonToRegisterTask = document.getElementById("registerTaskCard");
+/* funções */
+function eraseTask(id) {
+  for (let index = 0; index < taskArray.length; index++) {
+    if (taskArray[index].id == id) {
+      taskArray.splice(index, 1);
+    }
+  }
+  localStorage.setItem("taskList", JSON.stringify(taskArray));
+  renderAllTasks(taskArray);
+  eventToTrashBtn();
+  console.log(`> task apagada, salvei nova lista em LocalStorage`);
+}
 
+function eventToTrashBtn() {
+  const allTrashButtons = document.getElementsByName("trash-outline");
+  allTrashButtons.forEach((element) => {
+    element.addEventListener("click", (theClick) => {
+      eraseTask(theClick.target.id);
+    });
+  });
+}
+/* */
 if (localStorage.taskList) {
   taskArray = JSON.parse(localStorage.getItem("taskList"));
+  console.log("> true for localStorage taskList");
   closeRegisterCard();
   renderAllTasks(taskArray);
-  console.log("> true for localStorage taskList");
+  eventToTrashBtn();
 } else {
   const allScreenCard = document.getElementById("placeToRegisterCardRender");
   allScreenCard.style.display = "initial";
-  console.log("> false for localStorage taskList");
 }
 /* */
 /* colocando event listener no Form quando submeter a nova task */
@@ -54,6 +75,7 @@ newTask.addEventListener("submit", (e) => {
   closeRegisterCard();
   cleanRegisterCard();
   renderAllTasks(taskArray);
+  eventToTrashBtn();
   /* */
   console.log("> fechei registro, limpei e renderizei as task");
 });
