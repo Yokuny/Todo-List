@@ -14,6 +14,7 @@ const task = (title, description, dueDate, priorityColor, id) => {
       priority = "light-gray";
       break;
   }
+  id += 500;
   return { title, description, dueDate, priority, id };
 };
 export default task;

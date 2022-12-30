@@ -17,17 +17,18 @@ const newTask = document.getElementById("taskInput");
 const buttonToRegisterTask = document.getElementById("registerTaskCard");
 /* funções */
 const core = (() => {
-
   const eraseTask = (id) => {
-    for (let index = 0; index < taskArray.length; index++) {
-      if (taskArray[index].id == id) {
-        taskArray.splice(index, 1);
+    for (let i = 0; i < taskArray.length; i++) {
+      if (taskArray[i].id == id) {
+        taskArray.splice(i, 1);
       }
     }
     localStorage.setItem("taskList", JSON.stringify(taskArray));
     renderAllTasks(taskArray);
+    eventViewBtn();
+    eventEditBtn();
     eventEraseBtn();
-    console.log(`> task apagada, salvei nova lista em LocalStorage`);
+    console.log(`> task removida, nova lista em LocalStorage, novo display e listeners`);
   };
 
   const eventViewBtn = () => {
@@ -37,6 +38,7 @@ const core = (() => {
         console.log(">> esta executando função por click");
       });
     });
+    console.log("> event to eye-outline");
   };
 
   const eventEditBtn = () => {
@@ -46,18 +48,20 @@ const core = (() => {
         console.log(">> esta executando função por click");
       });
     });
+    console.log("> event to create-outline");
   };
 
   const eventEraseBtn = () => {
     const allTrashButtons = document.getElementsByName("trash-outline");
     allTrashButtons.forEach((element) => {
       element.addEventListener("click", (theClick) => {
-        eraseTask(theClick.target.id);
+        eraseTask(theClick.target.id - 1000);
       });
     });
+    console.log("> event to trash-outline");
   };
 
-  return { eventEraseBtn, eventEditBtn, eventViewBtn, };
+  return { eventViewBtn, eventEditBtn, eventEraseBtn };
 })();
 
 if (localStorage.taskList) {
