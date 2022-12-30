@@ -8,14 +8,32 @@
 - visualizar todos as tarefas em cada projeto (provavelmente apenas o título e a data de vencimento…)
 - expandir uma unica tarefa para poder ver seus detalhes e altera-la  */
 let taskArray = [];
-import task from "./script/task.js";
+import newTask from "./script/newTask.js";
 import closeRegisterCard from "./script/closeRegisterCard.js";
 import openRegisterCard from "./script/openRegisterCard.js";
 import cleanRegisterCard from "./script/cleanRegisterCard.js";
 import renderAllTasks from "./script/renderAllTasks.js";
-const newTask = document.getElementById("taskInput");
-const buttonToRegisterTask = document.getElementById("registerTaskCard");
+const eventRegisterTask = document.getElementById("taskInput");
+const RegisterTaskBtn = document.getElementById("registerTaskCard");
+const normalRenderBtn = document.getElementById("normalRender");
+const importantRenderBtn = document.getElementById("importantRender");
+const urgentRenderBtn = document.getElementById("urgentRender");
 /* funções */
+function renderByPriority(type) {
+  const resultedArray = [];
+  for (let i = 0; i < taskArray.length; i++) {
+    if (taskArray[i].priority == type) {
+      cpnsol.log("taskArray at this point");
+      console.log(taskArray[i].priority);
+      console.log(type);
+    }
+  }
+}
+
+/*
+
+
+*/
 const core = (() => {
   const eraseTask = (id) => {
     for (let i = 0; i < taskArray.length; i++) {
@@ -52,8 +70,8 @@ const core = (() => {
   };
 
   const eventEraseBtn = () => {
-    const allTrashButtons = document.getElementsByName("trash-outline");
-    allTrashButtons.forEach((element) => {
+    const allTrashBtns = document.getElementsByName("trash-outline");
+    allTrashBtns.forEach((element) => {
       element.addEventListener("click", (theClick) => {
         eraseTask(theClick.target.id - 1000);
       });
@@ -64,49 +82,33 @@ const core = (() => {
   return { eventViewBtn, eventEditBtn, eventEraseBtn };
 })();
 
+/*
+
+
+*/
 if (localStorage.taskList) {
   taskArray = JSON.parse(localStorage.getItem("taskList"));
-  console.log("> true for localStorage taskList");
-
   closeRegisterCard();
   renderAllTasks(taskArray);
   core.eventViewBtn();
   core.eventEditBtn();
   core.eventEraseBtn();
 } else {
-  const allScreenCard = document.getElementById("placeToRegisterCardRender");
-  allScreenCard.style.display = "initial";
+  openRegisterCard();
 }
-
-newTask.addEventListener("submit", (e) => {
+eventRegisterTask.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  let taskPriority = "";
-  if (document.getElementById("urgent").checked) {
-    taskPriority = "urgent";
-  } else if (document.getElementById("important").checked) {
-    taskPriority = "important";
-  } else {taskPriority = "normal";}
-
-  let aTask = task(
-    document.getElementById("taskTitle").value,
-    document.getElementById("taskDescription").value,
-    document.getElementById("dueData").value,
-    taskPriority,
-    taskArray.length
-  );
-  taskArray.push(aTask);
+  taskArray.push(newTask(taskArray.length));
   localStorage.setItem("taskList", JSON.stringify(taskArray));
-
   closeRegisterCard();
   cleanRegisterCard();
   renderAllTasks(taskArray);
   core.eventViewBtn();
   core.eventEditBtn();
   core.eventEraseBtn();
-  console.log("> fechei registro, limpei e renderizei as task");
+  //console.log("> fechei registro, limpei e renderizei as task");
 });
-
-buttonToRegisterTask.addEventListener("click", () => {
-  openRegisterCard();
-});
+RegisterTaskBtn.addEventListener("click", openRegisterCard);
+normalRenderBtn.addEventListener("click", openRegisterCard);
+importantRenderBtn.addEventListener("click", openRegisterCard);
+urgentRenderBtn.addEventListener("click", openRegisterCard);
