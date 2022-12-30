@@ -17,7 +17,7 @@ const newTask = document.getElementById("taskInput");
 const buttonToRegisterTask = document.getElementById("registerTaskCard");
 /* funções */
 const core = (() => {
-  
+
   const eraseTask = (id) => {
     for (let index = 0; index < taskArray.length; index++) {
       if (taskArray[index].id == id) {
@@ -26,7 +26,7 @@ const core = (() => {
     }
     localStorage.setItem("taskList", JSON.stringify(taskArray));
     renderAllTasks(taskArray);
-    eventToTrashBtn();
+    eventEraseBtn();
     console.log(`> task apagada, salvei nova lista em LocalStorage`);
   };
 
