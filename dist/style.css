@@ -100,51 +100,6 @@ footer > button:hover{
 footer > button:hover::after{
     content:" adicionar";
 }/*  */
-#itens{
-    grid-area: "section";
-    padding: 12px 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-#itens .item{
-    max-width: 300px;
-    padding:10px 12px 24px;
-    border-radius: 2px;
-    background-color: var(--light-gray);
-    position: relative;
-}
-#itens .item div h4{
-    font-size: 2rem;
-    font-weight: 400;
-}
-#itens .item div p{
-    font-size: 1.5rem;
-    font-weight: 300;
-    margin-top: 4px;
-}
-.cardIcons{
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    font-size: 1.3rem;
-    gap: 6px;
-    right: 6px;
-    bottom: 6px;
-}
-.cardIcons ion-icon{
-    transition: all 150ms ease-in-out;
-}
-.cardIcons ion-icon:nth-child(1):hover{
-    color: #0000ff;
-}
-.cardIcons ion-icon:nth-child(2):hover{
-    color: #008000;
-}
-.cardIcons ion-icon:nth-child(3):hover{
-    color: var(--red);
-}
-/*  */
 @media (max-width:825px) {
     main{
         display: initial;
