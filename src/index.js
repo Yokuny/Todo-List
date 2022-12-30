@@ -12,29 +12,32 @@ import newTask from "./script/newTask.js";
 import closeRegisterCard from "./script/closeRegisterCard.js";
 import openRegisterCard from "./script/openRegisterCard.js";
 import cleanRegisterCard from "./script/cleanRegisterCard.js";
-import renderAllTasks from "./script/renderAllTasks.js";
+import renderTasks from "./script/renderTasks.js";
+import activedMenu from "./script/activedMenu.js";
 const eventRegisterTask = document.getElementById("taskInput");
 const RegisterTaskBtn = document.getElementById("registerTaskCard");
 const normalRenderBtn = document.getElementById("normalRender");
 const importantRenderBtn = document.getElementById("importantRender");
 const urgentRenderBtn = document.getElementById("urgentRender");
-/* funções */
-function renderByPriority(type) {
-  const resultedArray = [];
-  for (let i = 0; i < taskArray.length; i++) {
-    if (taskArray[i].priority == type) {
-      cpnsol.log("taskArray at this point");
-      console.log(taskArray[i].priority);
-      console.log(type);
-    }
-  }
-}
-
+const allTaskRenderBtn = document.getElementById("allTaskRender");
 /*
-
-
+funções
 */
 const core = (() => {
+  const renderByPriority = (type) => {
+    let resultedArray = [];
+    for (let i = 0; i < taskArray.length; i++) {
+      if (taskArray[i].priority == type) {
+        resultedArray.push(taskArray[i]);
+      }
+    }
+    renderTasks(resultedArray);
+    activedMenu(allTaskRenderBtn);
+    eventViewBtn();
+    eventEditBtn();
+    eventEraseBtn();
+  };
+
   const eraseTask = (id) => {
     for (let i = 0; i < taskArray.length; i++) {
       if (taskArray[i].id == id) {
@@ -42,7 +45,8 @@ const core = (() => {
       }
     }
     localStorage.setItem("taskList", JSON.stringify(taskArray));
-    renderAllTasks(taskArray);
+    renderTasks(taskArray);
+    activedMenu(allTaskRenderBtn);
     eventViewBtn();
     eventEditBtn();
     eventEraseBtn();
@@ -63,7 +67,7 @@ const core = (() => {
     const allEdiButtons = document.getElementsByName("create-outline");
     allEdiButtons.forEach((element) => {
       element.addEventListener("click", (theClick) => {
-        console.log(">> esta executando função por click");
+        editTask(theClick.target.id - 1000);
       });
     });
     console.log("> event to create-outline");
@@ -79,36 +83,55 @@ const core = (() => {
     console.log("> event to trash-outline");
   };
 
-  return { eventViewBtn, eventEditBtn, eventEraseBtn };
+  return { eventViewBtn, eventEditBtn, eventEraseBtn, renderByPriority };
 })();
-
 /*
-
-
+verificação inicial se tem local storage
 */
 if (localStorage.taskList) {
   taskArray = JSON.parse(localStorage.getItem("taskList"));
   closeRegisterCard();
-  renderAllTasks(taskArray);
+  renderTasks(taskArray);
+  activedMenu(allTaskRenderBtn);
   core.eventViewBtn();
   core.eventEditBtn();
   core.eventEraseBtn();
 } else {
   openRegisterCard();
 }
+/*
+watched components
+*/
 eventRegisterTask.addEventListener("submit", (e) => {
   e.preventDefault();
   taskArray.push(newTask(taskArray.length));
   localStorage.setItem("taskList", JSON.stringify(taskArray));
   closeRegisterCard();
   cleanRegisterCard();
-  renderAllTasks(taskArray);
+  core.renderByPriority(taskArray[taskArray.length - 1].priority);
+  activedMenu(taskArray[taskArray.length - 1].priority);
   core.eventViewBtn();
   core.eventEditBtn();
   core.eventEraseBtn();
   //console.log("> fechei registro, limpei e renderizei as task");
 });
 RegisterTaskBtn.addEventListener("click", openRegisterCard);
-normalRenderBtn.addEventListener("click", openRegisterCard);
-importantRenderBtn.addEventListener("click", openRegisterCard);
-urgentRenderBtn.addEventListener("click", openRegisterCard);
+normalRenderBtn.addEventListener("click", () => {
+  core.renderByPriority("green");
+  activedMenu(normalRenderBtn);
+});
+importantRenderBtn.addEventListener("click", () => {
+  core.renderByPriority("blue");
+  activedMenu(importantRenderBtn);
+});
+urgentRenderBtn.addEventListener("click", () => {
+  core.renderByPriority("red");
+  activedMenu(urgentRenderBtn);
+});
+allTaskRenderBtn.addEventListener("click", () => {
+  renderTasks(taskArray);
+  activedMenu(allTaskRenderBtn);
+  core.eventViewBtn();
+  core.eventEditBtn();
+  core.eventEraseBtn();
+});

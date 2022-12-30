@@ -27,15 +27,13 @@ aside div button{
     border-radius: 6px;
     width: 60%;
 }
-#projectList{
-    font-size: 2rem;
-}
 #projectList > div{
     display: flex;
     align-items: center;
     font-size: 3rem;
     padding: 4px 10px;
     border-radius: 6px;
+    cursor: pointer;
 }
 #projectList > div > ion-icon{
     margin-right: 8px;
@@ -48,8 +46,17 @@ aside div button{
 }
 #projectList > div:hover,
 #projectList > div h4:active{
+    background-color: var(--light-gray);
+}
+.listHover{
+    background-color: #fff;
+}
+.listHover:hover{
     font-weight: 600;
     background-color: var(--light-gray);
+}
+.listSelected{
+    background-color: #c8c8c84d;
 }/* mobile menu */
 @media (max-width:825px) {
     aside{
@@ -128,11 +135,8 @@ footer > button:hover::after{
 .cardIcons ion-icon{
     transition: all 150ms ease-in-out;
 }
-.cardIcons ion-icon:hover{
-    font-size: 1.5rem;
-}
 .cardIcons ion-icon:nth-child(1):hover{
-    color: var(--blue);
+    color: #0000ff;
 }
 .cardIcons ion-icon:nth-child(2):hover{
     color: #008000;
