@@ -12,9 +12,9 @@ export default function renderAllTasks(allTasks) {
     cardTextContent.appendChild(cardTextP);
     let iconsDiv = document.createElement("div");
     iconsDiv.innerHTML = `
-    <ion-icon id="${allTasks[index].id + 4000}" name="eye-outline"></ion-icon>
-    <ion-icon id="${allTasks[index].id + 2000}" name="create-outline"></ion-icon>
-    <ion-icon id="${allTasks[index].id}" name="trash-outline"></ion-icon>`;
+    <ion-icon id="${allTasks[index].id + 5000}" name="eye-outline"></ion-icon>
+    <ion-icon id="${allTasks[index].id + 3000}" name="create-outline"></ion-icon>
+    <ion-icon id="${allTasks[index].id + 1000}" name="trash-outline"></ion-icon>`;
     iconsDiv.classList.add("cardIcons");
     let theCard = document.createElement("div");
     theCard.classList.add("item");
